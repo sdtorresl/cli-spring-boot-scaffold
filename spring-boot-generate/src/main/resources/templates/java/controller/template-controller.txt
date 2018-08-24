@@ -98,7 +98,7 @@ public class ${className}Controller {
 		return "redirect:/${url_path}/" + ${paramClassName}.getId();
 	}
 	
-	@DeleteMapping("/{id}")
+	@GetMapping("/{id}/delete")
 	public String delete(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 		try {
 			if (id != null) {
@@ -115,7 +115,7 @@ public class ${className}Controller {
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 			throw new ServiceException(e.getMessage());
 		}
-		return "redirect:/${url_path}/index";
+		return "redirect:/${url_path}";
 	}
 
 }

@@ -98,7 +98,7 @@ public class UserController {
 		return "redirect:/users/" + user.getId();
 	}
 	
-	@DeleteMapping("/{id}")
+	@GetMapping("/{id}/delete")
 	public String delete(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 		try {
 			if (id != null) {
@@ -115,7 +115,7 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 			throw new ServiceException(e.getMessage());
 		}
-		return "redirect:/users/index";
+		return "redirect:/users";
 	}
 
 }
