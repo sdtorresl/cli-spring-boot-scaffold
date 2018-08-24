@@ -6,11 +6,15 @@ import br.com.generate.Layers;
 import br.com.generate.ReadTemplateFile;
 import br.com.generate.migrate.Migrations;
 import br.com.util.ModelGenerateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author NetoDevel
  */
 public class ModelGenerator extends ReadTemplateFile {
+	
+	@Autowired
+	ModelParamsGeneratorFactory modelParamsGeneratorFactory;
 	
 	@Override
 	public String getLayer() {
@@ -29,11 +33,16 @@ public class ModelGenerator extends ReadTemplateFile {
 	
 	public String generateParams(String params) {
 		String[] variablesSplits = params.split(" ");
-		String finalParameters = "";
+		StringBuilder modelParameters = new StringBuilder();
+		
 		for (int i = 0; i < variablesSplits.length; i++) {
 
 			String [] typeAndNameVars = variablesSplits[i].split(":");
-
+			
+			final ModelParamsGenerator modelParamsGenerator = modelParamsGeneratorFactory.getModelParamsGenerator(typeAndNameVars);
+			modelParameters.append(modelParamsGenerator.buildCompleteField());
+			
+			/*
 			String column = "    @Column(name = \"" + typeAndNameVars[0] + "\")";
 			String lineVariables = "    private " + typeAndNameVars[1] + " " + typeAndNameVars[0] + ";";
 			String lineClean = "\n";
@@ -43,8 +52,9 @@ public class ModelGenerator extends ReadTemplateFile {
 			finalParameters += lineClean;
 			finalParameters += lineVariables;
 			finalParameters += lineClean;
+			*/
 		}
-		return finalParameters;
+		return modelParameters.toString();
 	}
 
 	public static void main(String[] args) throws IOException  {

@@ -16,7 +16,8 @@ public class SupportTypes {
 			String[] separator = parameters.split(" ");
 			for (int i = 0; i < separator.length; i++) {
 				String [] nameAndType = separator[i].split(":");
-				if (!typesSupported.contains(nameAndType[1].trim())) {
+				if (!typesSupported.contains(nameAndType[nameAndType.length - 1].trim())
+						|| (nameAndType.length != 2 && nameAndType.length != 3)) {
 					System.out.println("Error: type " + nameAndType[1] + " not supported.");
 					return false;
 				}
