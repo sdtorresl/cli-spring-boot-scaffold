@@ -7,7 +7,7 @@ package br.com.generate.java.command.model;
  */
 public class ModelParamsGenerator {
 	
-	public static final String LINE_BREAK = "\n";
+	private static final String LINE_BREAK = "\n";
 
 	private final String dbColumnName;
 	private final String fieldType;

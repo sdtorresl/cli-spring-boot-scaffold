@@ -30,8 +30,11 @@ log/
 .DS_Store
 
 ### Scaffolding lib auto-generated files ###
+spring-boot-generate/src/main/java/br/com/example/
 spring-boot-generate/src/main/resources/migrations/
 spring-scaffold-cli/src/main/java/br/com/example/
+spring-scaffold-cli/src/main/java/com/example/
 spring-scaffold-cli/src/main/resources/application.properties
+spring-scaffold-cli/src/main/resources/templates/layout.html
 spring-scaffold-cli/src/main/resources/templates/user/
 spring-scaffold-cli/src/main/resources/templates/usermodel/
