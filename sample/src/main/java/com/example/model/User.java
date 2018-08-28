@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.lang.String; 
-import java.lang.String; 
 
 
 @Entity
@@ -19,7 +18,7 @@ public class User implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name_col")
     private String name;
 
     @Column(name = "email")

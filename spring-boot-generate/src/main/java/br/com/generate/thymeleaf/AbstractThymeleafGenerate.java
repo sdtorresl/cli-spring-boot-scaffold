@@ -3,6 +3,7 @@ package br.com.generate.thymeleaf;
 import org.springframework.util.StringUtils;
 
 import br.com.generate.ReadScaffoldInfo;
+import br.com.generate.java.command.model.ModelParamsHolder;
 
 
 /**
@@ -20,7 +21,8 @@ public abstract class AbstractThymeleafGenerate extends ReadScaffoldInfo {
 		
 		for (int i = 0; i < params.length; i++) {
 			String [] nameAndType = params[i].split(":");
-			thParameters += TABS_INDEX + "<th>" + StringUtils.capitalize(nameAndType[0]) + "</th> \n";
+			final String fieldName = new ModelParamsHolder(nameAndType).getFieldName();
+			thParameters += TABS_INDEX + "<th>" + StringUtils.capitalize(fieldName) + "</th> \n";
 		}
 
 		thParameters += TABS_INDEX + "<th>Action</th>";
@@ -34,7 +36,8 @@ public abstract class AbstractThymeleafGenerate extends ReadScaffoldInfo {
 		String tdParameters = "";
 		for (int i = 0; i < params.length; i++) {
 			String [] nameAndType = params[i].split(":");
-			tdParameters += TABS_INDEX + "<td th:text=\"${" + className.toLowerCase() + "." + nameAndType[0] + "}\"></td> \n";
+			final String fieldName = new ModelParamsHolder(nameAndType).getFieldName();
+			tdParameters += TABS_INDEX + "<td th:text=\"${" + className.toLowerCase() + "." + fieldName + "}\"></td> \n";
 		}
 		
 		tdParameters += TABS_INDEX + "<td>\n";
@@ -50,10 +53,10 @@ public abstract class AbstractThymeleafGenerate extends ReadScaffoldInfo {
 		String [] params = parameters.split(" ");
 		for (int i = 0; i < params.length; i++) {
 			String [] nameAndType = params[i].split(":");
-			
+			final String fieldName = new ModelParamsHolder(nameAndType).getFieldName();
 			inputParameters += TABS_FORM + "<div class=\"form-group\"> \n";
-			inputParameters += TABS_FORM + "	<label for=\""+ nameAndType[0] +"\">"+ StringUtils.capitalize(nameAndType[0]) +"</label>  \n";
-			inputParameters += TABS_FORM + "	<input id=\""+ nameAndType[0] +"\" name=\"" + nameAndType[0] + "\" type=\"text\" class=\"form-control\" th:field=\"*{"+ nameAndType[0] +"}\" />  \n";
+			inputParameters += TABS_FORM + "	<label for=\""+ fieldName +"\">"+ StringUtils.capitalize(fieldName) +"</label>  \n";
+			inputParameters += TABS_FORM + "	<input id=\""+ fieldName +"\" name=\"" + fieldName + "\" type=\"text\" class=\"form-control\" th:field=\"*{"+ fieldName +"}\" />  \n";
 			inputParameters += TABS_FORM + "</div> \n";
 		}
 		
@@ -65,9 +68,10 @@ public abstract class AbstractThymeleafGenerate extends ReadScaffoldInfo {
 		String [] params = parameters.split(" ");
 		for (int i = 0; i < params.length; i++) {
 			String [] nameAndType = params[i].split(":");
+			final String fieldName = new ModelParamsHolder(nameAndType).getFieldName();
 			inputParameters += TABS_SHOW + "<div class=\"form-group\"> \n";
-			inputParameters += TABS_SHOW + "	<label for=\""+ nameAndType[0] +"\">"+ StringUtils.capitalize(nameAndType[0]) +": </label>  \n";
-			inputParameters += TABS_SHOW + "	<span th:text=\"${" + paramClassName + "." + nameAndType[0] + "}\"></span> \n";
+			inputParameters += TABS_SHOW + "	<label for=\""+ fieldName +"\">"+ StringUtils.capitalize(fieldName) +": </label>  \n";
+			inputParameters += TABS_SHOW + "	<span th:text=\"${" + paramClassName + "." + fieldName + "}\"></span> \n";
 			inputParameters += TABS_SHOW + "</div> \n";
 		}
 		return inputParameters;
