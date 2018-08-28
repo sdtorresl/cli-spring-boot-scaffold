@@ -1,5 +1,6 @@
 package br.com.util;
 
+import br.com.generate.java.command.model.ModelParamsHolder;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,8 +63,9 @@ public class ModelGenerateUtils {
 		String gettersAndSetters = "";
 		for (int i = 0; i < separator.length; i++) {
 			String [] nameAndType = separator[i].split(":");
-			String name = nameAndType[0];
-			String type = nameAndType[1];
+			ModelParamsHolder modelParamsHolder = new ModelParamsHolder(nameAndType);
+			String name = modelParamsHolder.getFieldName();
+			String type = modelParamsHolder.getFieldType();
 			
 			//SETTER
 			gettersAndSetters += TAB + "public void set" + StringUtils.capitalize(name) + "(" + type + " " + name + ") {" ;

@@ -33,9 +33,11 @@ public class ModelGenerator extends ReadTemplateFile {
 		for (int i = 0; i < variablesSplits.length; i++) {
 
 			String [] typeAndNameVars = variablesSplits[i].split(":");
+			ModelParamsHolder modelParamsHolder = new ModelParamsHolder(typeAndNameVars);
 
-			String column = "    @Column(name = \"" + typeAndNameVars[0] + "\")";
-			String lineVariables = "    private " + typeAndNameVars[1] + " " + typeAndNameVars[0] + ";";
+			String column = "    @Column(name = \"" + modelParamsHolder.getDbColumnName() + "\")";
+			String lineVariables = "    private " + modelParamsHolder.getFieldType() + " " 
+					+ modelParamsHolder.getFieldName() + ";";
 			String lineClean = "\n";
 
 			finalParameters += lineClean;
