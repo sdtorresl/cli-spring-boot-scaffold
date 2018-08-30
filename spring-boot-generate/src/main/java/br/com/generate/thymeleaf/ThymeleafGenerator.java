@@ -1,5 +1,7 @@
 package br.com.generate.thymeleaf;
 
+import br.com.generate.java.command.model.ModelClassNameHolder;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -12,9 +14,10 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		if (validateLayoutHtml()) {
 			generateTemplateLayout();
 		}
-		generateIndexHtml(className, parameters);
-		generateFormHtml(className, parameters);
-		generateShowHtml(className, parameters);
+		ModelClassNameHolder modelClassNameHolder = new ModelClassNameHolder(className.split(":")); 
+		generateIndexHtml(modelClassNameHolder.getClassName(), parameters);
+		generateFormHtml(modelClassNameHolder.getClassName(), parameters);
+		generateShowHtml(modelClassNameHolder.getClassName(), parameters);
 	}
 
 	public void generateTemplateLayout() throws IOException {

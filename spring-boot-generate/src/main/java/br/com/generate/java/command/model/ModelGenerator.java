@@ -21,8 +21,8 @@ public class ModelGenerator extends ReadTemplateFile {
 	protected String operationGenerate(String javaStrings, String nameClass, String parameters) {
 		return javaStrings.replace("${package}", getPackage() + ".model")
 				.replace("${imports}", ModelGenerateUtils.generateImports(parameters))
-				.replace("${className}", nameClass)
-				.replace("${name_table}", nameClass.toLowerCase() + "s")
+				.replace("${className}", modelClassNameHolder.getClassName())
+				.replace("${name_table}", modelClassNameHolder.getDbTableName())
 				.replace("${parameters}", generateParams(parameters))
 				.replace("${getters}", ModelGenerateUtils.generateGettersAndSetters(parameters));
 	}
