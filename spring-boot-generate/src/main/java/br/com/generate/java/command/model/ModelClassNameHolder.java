@@ -13,10 +13,10 @@ public class ModelClassNameHolder {
 	private final String dbTableName;
 
 	/**
-	 * Creates an instance of this class from an String array with the class-name-related
-	 * params, which can have a length of 1 (class name and db table name are the same) or 
-	 * 2 (db table name is specified).
-	 * 
+	 * Creates an instance of this class from an String array with the
+	 * class-name-related params, which can have a length of 1 (class name and
+	 * db table name are the same) or 2 (db table name is specified).
+	 *
 	 * @param classNameParams the class-name-related params entered by the user.
 	 */
 	public ModelClassNameHolder(String[] classNameParams) {
