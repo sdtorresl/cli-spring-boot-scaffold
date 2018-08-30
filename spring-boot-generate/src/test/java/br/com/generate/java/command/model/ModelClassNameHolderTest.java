@@ -4,8 +4,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- *
- * @author root
+ * Test class for {@link ModelClassNameHolder}
+ * 
+ * @author Nicolás Arias
  */
 public class ModelClassNameHolderTest {
 	
