@@ -20,7 +20,7 @@ public abstract class ReadTemplateFile extends AbstractGenerate {
 			modelClassNameHolder = new ModelClassNameHolder(nameClass.split(":"));
 			String javaStrings = readTemplateFile(fileNameTemplate);
 			String newStrings = operationGenerate(javaStrings, nameClass, parameters);
-			outPutFile(newStrings, nameClass);
+			outPutFile(newStrings, modelClassNameHolder.getClassName());
 			return true;
 		}
 		return false;

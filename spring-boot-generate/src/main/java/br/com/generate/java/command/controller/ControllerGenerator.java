@@ -18,8 +18,8 @@ public class ControllerGenerator extends ReadTemplateFile {
 				.replace("${package_model}", getPackage() + ".model")
 				.replace("${package_service}", getPackage() + ".service")
 				.replace("${className}", modelClassNameHolder.getClassName())
-				.replace("${paramClassName}", nameClass.toLowerCase())
-				.replace("${url_path}", nameClass.toLowerCase() + "s");
+				.replace("${paramClassName}", modelClassNameHolder.getClassName().toLowerCase())
+				.replace("${url_path}", modelClassNameHolder.getClassName().toLowerCase() + "s");
 	}
 	
 	public static void main(String[] args) throws IOException {

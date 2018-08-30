@@ -1,5 +1,7 @@
 package br.com.generate.thymeleaf;
 
+import br.com.generate.java.command.model.ModelClassNameHolder;
+
 import java.io.File;
 import java.io.IOException;
 
