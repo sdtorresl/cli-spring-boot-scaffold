@@ -12,9 +12,10 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		if (validateLayoutHtml()) {
 			generateTemplateLayout();
 		}
-		generateIndexHtml(className, parameters);
-		generateFormHtml(className, parameters);
-		generateShowHtml(className, parameters);
+		ModelClassNameHolder modelClassNameHolder = new ModelClassNameHolder(className.split(":")); 
+		generateIndexHtml(modelClassNameHolder.getClassName(), parameters);
+		generateFormHtml(modelClassNameHolder.getClassName(), parameters);
+		generateShowHtml(modelClassNameHolder.getClassName(), parameters);
 	}
 
 	public void generateTemplateLayout() throws IOException {

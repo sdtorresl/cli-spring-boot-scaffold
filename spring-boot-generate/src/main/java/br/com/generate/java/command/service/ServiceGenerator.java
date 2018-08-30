@@ -17,8 +17,8 @@ public class ServiceGenerator extends ReadTemplateFile {
 		return javaStrings.replace("${package}", getPackage() + ".service")
 				.replace("${package_model}", getPackage() + ".model")
 				.replace("${package_repository}", getPackage() + ".repository")
-				.replace("${className}", nameClass)
-				.replace("${paramClassName}", nameClass.toLowerCase());
+				.replace("${className}", modelClassNameHolder.getClassName())
+				.replace("${paramClassName}", modelClassNameHolder.getClassName().toLowerCase());
 
 	}
 

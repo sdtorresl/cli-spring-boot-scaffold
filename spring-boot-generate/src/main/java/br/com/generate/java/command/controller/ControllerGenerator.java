@@ -17,7 +17,7 @@ public class ControllerGenerator extends ReadTemplateFile {
 		return javaStrings.replace("${package}", getPackage() + ".controller")
 				.replace("${package_model}", getPackage() + ".model")
 				.replace("${package_service}", getPackage() + ".service")
-				.replace("${className}", nameClass)
+				.replace("${className}", modelClassNameHolder.getClassName())
 				.replace("${paramClassName}", nameClass.toLowerCase())
 				.replace("${url_path}", nameClass.toLowerCase() + "s");
 	}
