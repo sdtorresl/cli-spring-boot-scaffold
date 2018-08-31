@@ -32,8 +32,8 @@ public class ModelHandler extends OptionHandler {
 	
 	@Override
 	protected ExitStatus run(OptionSet options) throws Exception {
-		String nameClass = (String) options.valueOf("n");
-		String parametersClass = (String) options.valueOf("p");
+		String nameClass = ((String) options.valueOf("n")).trim();
+		String parametersClass = ((String) options.valueOf("p")).trim();
 		generateModelJava(nameClass, parametersClass);
 		return ExitStatus.OK;
 	}
