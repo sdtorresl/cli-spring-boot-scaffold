@@ -24,7 +24,7 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		String htmlString = IOUtils.toString(getClass().getResourceAsStream("/templates/template-layout.html"), null);
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/layout.html");
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("create /src/main/resources/templates/layout.html");
+		System.out.println("Create src/main/resources/templates/layout.html");
 	}
 	
 	public void generateIndexHtml(String className, String parameters) throws IOException {
@@ -48,7 +48,7 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/" + className.toLowerCase() + "/index.html");
 		
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("create /src/main/resources/templates/" + className.toLowerCase() + "/index.html");
+		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/index.html");
 	}
 
 	public void generateFormHtml(String className, String parameters) throws IOException {
@@ -68,7 +68,7 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/" + className.toLowerCase() + "/form.html");
 		
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("create /src/main/resources/templates/" + className.toLowerCase() + "/form.html");
+		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/form.html");
 	}
 	
 	public void generateShowHtml(String className, String parameters) throws IOException {
@@ -88,7 +88,7 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/" + className.toLowerCase() + "/show.html");
 		
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("create /src/main/resources/templates/" + className.toLowerCase() + "/show.html");
+		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/show.html");
 	}
 	
 	public boolean validateLayoutHtml() throws IOException {

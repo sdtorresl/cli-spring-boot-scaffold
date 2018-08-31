@@ -29,7 +29,7 @@ public class ApplicationPropertiesGenerator extends ReadScaffoldInfo {
 		
 		File newFile = new File(getUserDir() + "/src/main/resources/application.properties");
 		FileUtils.writeStringToFile(newFile, strings);
-		System.out.println("create /src/main/resources/application.properties");
+		System.out.println("Create src/main/resources/application.properties");
 	}
 	
 	public boolean validate() throws IOException {

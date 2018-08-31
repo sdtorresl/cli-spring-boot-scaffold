@@ -25,7 +25,7 @@ public class ThymeleafCleanGenerator extends AbstractThymeleafGenerate {
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/" + className.toLowerCase() + "/index.html");
 		
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("create /src/main/resources/templates/" + className.toLowerCase() + "/index.html");
+		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/index.html");
 	}
 	
 }

@@ -32,7 +32,7 @@ public class SetupGenerator extends ReadScaffoldInfo {
 			writer.println("username:" + userDataBase);
 			writer.println("password:" + passWordDatabase);
 			writer.close();
-			System.out.println("create /src/main/resources/scaffold.info");
+			System.out.println("Create src/main/resources/scaffold.info");
 		} catch (FileNotFoundException e) {
 		} catch (UnsupportedEncodingException e) {
 		}
