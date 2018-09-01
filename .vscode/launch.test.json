@@ -1,0 +1,48 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "spring-scaffold-cli",
+                "projectName": "spring-scaffold-cli",
+                "workingDirectory": "/home/sdtorresl/Programming/Java/cli-spring-boot-scaffold/spring-scaffold-cli",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "spring-boot-generate",
+                "projectName": "spring-boot-generate",
+                "workingDirectory": "/home/sdtorresl/Programming/Java/cli-spring-boot-scaffold/spring-boot-generate",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "spring-scaffold-cli",
+                "projectName": "spring-scaffold-cli",
+                "workingDirectory": "/home/sdtorresl/Programming/Java/cli-spring-boot-scaffold/spring-scaffold-cli",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "spring-boot-generate",
+                "projectName": "spring-boot-generate",
+                "workingDirectory": "/home/sdtorresl/Programming/Java/cli-spring-boot-scaffold/spring-boot-generate",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
