@@ -3,8 +3,6 @@ package br.com.generate.thymeleaf;
 import br.com.generate.java.command.model.ModelClassNameHolder;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -12,53 +10,40 @@ import org.apache.commons.io.IOUtils;
 
 public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 
+    private String templateDir;
+
 	public ThymeleafGenerator(String className, String parameters) throws IOException {
-		if (validateLayoutHtml(null)) {
-			generateTemplateLayout();
-		}
-		ModelClassNameHolder modelClassNameHolder = new ModelClassNameHolder(className.split(":")); 
-		generateIndexHtml(modelClassNameHolder.getClassName(), parameters, null);
-		generateFormHtml(modelClassNameHolder.getClassName(), parameters, null);
-		generateShowHtml(modelClassNameHolder.getClassName(), parameters, null);
+		this.templateDir = "/templates/";
+
+		generateTemplates(className, parameters);
 	}
 
 	public ThymeleafGenerator(String className, String parameters, String templateDir) throws IOException {
-		if (validateLayoutHtml(templateDir)) {
-			generateTemplateLayout(templateDir);
+		this.templateDir = templateDir;
+		
+		generateTemplates(className, parameters);
+	}
+
+	private void generateTemplates(String className, String parameters) throws IOException {
+		if (validateLayoutHtml()) {
+			generateTemplateLayout();
 		}
 		ModelClassNameHolder modelClassNameHolder = new ModelClassNameHolder(className.split(":")); 
-		generateIndexHtml(modelClassNameHolder.getClassName(), parameters, templateDir);
-		generateFormHtml(modelClassNameHolder.getClassName(), parameters, templateDir);
-		generateShowHtml(modelClassNameHolder.getClassName(), parameters, templateDir);
+		generateIndexHtml(modelClassNameHolder.getClassName(), parameters);
+		generateFormHtml(modelClassNameHolder.getClassName(), parameters);
+		generateShowHtml(modelClassNameHolder.getClassName(), parameters);
 	}
 
-	public void generateTemplateLayout() throws IOException {
-		String htmlString = IOUtils.toString(getClass().getResourceAsStream("/templates/template-layout.html"), null);
-		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/layout.html");
-		FileUtils.writeStringToFile(newHtmlFile, htmlString);
-		System.out.println("Create src/main/resources/templates/layout.html");
-	}
-
-	public void generateTemplateLayout(String templateDir) throws IOException {
-		File layoutFile = new File(templateDir + "/template-layout.html");
-		InputStream layoutInputStream = new FileInputStream(layoutFile);
-		String htmlString = IOUtils.toString(layoutInputStream, null);
+	public void generateTemplateLayout() throws IOException {		
+		String htmlString = getHtmlString("template-layout.html");
 
 		File newHtmlFile = new File(getUserDir() + "/src/main/resources/templates/layout.html");
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
 		System.out.println("Create src/main/resources/templates/layout.html");
 	}
 	
-	public void generateIndexHtml(String className, String parameters, String templateDir) throws IOException {
-		String htmlString;
-		if(templateDir != null) {
-			File layoutFile = new File(templateDir + "/template-index.html");
-			InputStream layoutInputStream = new FileInputStream(layoutFile);
-			htmlString = IOUtils.toString(layoutInputStream, null);
-		}
-		else {
-			htmlString = IOUtils.toString(getClass().getResourceAsStream("/templates/template-index.html"), null);
-		}
+	public void generateIndexHtml(String className, String parameters) throws IOException {
+		String htmlString = getHtmlString("template-index.html");
 
 		String template = "layout";
 		String classNameParam = className;
@@ -82,16 +67,8 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/index.html");
 	}
 
-	public void generateFormHtml(String className, String parameters, String templateDir) throws IOException {
-		String htmlString;
-		if(templateDir != null) {
-			File layoutFile = new File(templateDir + "/template-form.html");
-			InputStream layoutInputStream = new FileInputStream(layoutFile);
-			htmlString = IOUtils.toString(layoutInputStream, null);
-		}
-		else {
-			htmlString = IOUtils.toString(getClass().getResourceAsStream("/templates/template-form.html"), null);
-		}
+	public void generateFormHtml(String className, String parameters) throws IOException {
+		String htmlString = getHtmlString("template-form.html");
 
 		String template = "layout";
 		String paramClassName = className.toLowerCase();
@@ -110,17 +87,9 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/form.html");
 	}
 	
-	public void generateShowHtml(String className, String parameters, String templateDir) throws IOException {
-		String htmlString;
-		if(templateDir != null) {
-			File layoutFile = new File(templateDir + "/template-show.html");
-			InputStream layoutInputStream = new FileInputStream(layoutFile);
-			htmlString = IOUtils.toString(layoutInputStream, null);
-		}
-		else {
-			htmlString = IOUtils.toString(getClass().getResourceAsStream("/templates/template-show.html"), null);
-		}
-
+	public void generateShowHtml(String className, String parameters) throws IOException {
+		String htmlString = getHtmlString("template-show.html");
+		
 		String template = "layout";
 		String paramClassName = className.toLowerCase();
 		String pathUrl = "/" + className.toLowerCase() + "s";
@@ -137,18 +106,36 @@ public class ThymeleafGenerator extends AbstractThymeleafGenerate {
 		FileUtils.writeStringToFile(newHtmlFile, htmlString);
 		System.out.println("Create src/main/resources/templates/" + className.toLowerCase() + "/show.html");
 	}
+
+	protected String getHtmlString(String resource) throws IOException {
+		resource = this.templateDir + File.separator + resource;
+		String htmlString;
+		htmlString = IOUtils.toString(getClass().getResourceAsStream(resource), null);
+		return htmlString;
+	}
 	
+	public boolean validateLayoutHtml() throws IOException {
+		File file = new File("layout.html");
+		return checkIfFileExists(file);
+	}
+
 	public boolean validateLayoutHtml(String templateDir) throws IOException {
-		String pathFile = templateDir != null ? templateDir + "/layout.html": "/src/main/resources/templates/layout.html";
-		File f = new File(pathFile);
-		if(f.exists()) { 
+		File file = new File(templateDir);
+		return checkIfFileExists(file);
+	}
+	
+	private boolean checkIfFileExists(File file) {
+		if(file.exists()) { 
 			return false;
 		} 
 		return true;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		new ThymeleafGenerator("User", "name:String email:String");
 	}
 	
+	protected String getTemplateDir() {
+		return this.templateDir;
+	}
 }

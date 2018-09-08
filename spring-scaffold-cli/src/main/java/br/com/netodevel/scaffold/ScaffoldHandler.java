@@ -11,6 +11,7 @@ import br.com.generate.java.command.model.ModelGenerator;
 import br.com.generate.java.command.repository.RepositoryGenerator;
 import br.com.generate.java.command.service.ServiceGenerator;
 import br.com.generate.thymeleaf.ThymeleafGenerator;
+import br.com.generate.thymeleaf.ThymeleafGeneratorWithTemplate;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 
@@ -81,7 +82,7 @@ public class ScaffoldHandler extends OptionHandler {
 				new RepositoryGenerator().generate(nameClass, null, "template-repository.txt");
 				new ServiceGenerator().generate(nameClass, null, "template-service.txt");
 				new ControllerGenerator().generate(nameClass, null, "template-controller.txt");
-				new ThymeleafGenerator(nameClass, parametersClass, templateDir);
+				new ThymeleafGeneratorWithTemplate(nameClass, parametersClass, templateDir);
 				//new Migrations().create(nameClass, parametersClass);
 			}
 		} catch (Exception e) {
