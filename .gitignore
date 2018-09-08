@@ -29,6 +29,9 @@ log/
 ### Mac ###
 .DS_Store
 
+### Visual Studio Code ###
+.vscode
+
 ### Scaffolding lib auto-generated files ###
 spring-boot-generate/src/main/resources/migrations/
 spring-scaffold-cli/src/main/java/br/com/example/
