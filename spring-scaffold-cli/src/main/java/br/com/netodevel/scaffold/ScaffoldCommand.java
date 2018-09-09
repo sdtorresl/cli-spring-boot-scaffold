@@ -27,6 +27,7 @@ public class ScaffoldCommand extends OptionParsingCommand{
 	public Collection<HelpExample> getExamples() {
 		List<HelpExample> list = new ArrayList<HelpExample>();
 		list.add(new HelpExample("scaffold", "scaffold -n User -p name:String"));
+		list.add(new HelpExample("scaffold", "scaffold -n User -p name:String -t template"));
 		return list;
 	}
 }
