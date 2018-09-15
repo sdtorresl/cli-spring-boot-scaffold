@@ -29,8 +29,8 @@
 					<td th:text="${user.email}"></td> 
 					<td>
 							<a th:href="@{/users/{id}(id = ${user.id})}">Show</a> 
-					 		<a th:href="@{/users/{id}/edit(id = ${user.id})}">Edit</a> 
-							<a href="#">Destroy</a> 
+					 		<a th:href="@{/users/edit/{id}(id = ${user.id})}">Edit</a> 
+							<a th:href="@{/users/delete/{id}(id = ${user.id})}">Destroy</a> 
 					</td>
 				</tr>
 			</tbody>

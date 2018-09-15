@@ -15,8 +15,8 @@
 		<h1>Show ${className}</h1>
 		<hr />
 ${showAttributes}
-		<a th:href="@{/path_url/{id}/edit(id = ${paramClassName.id})}">Edit this record</a> <br/>
-		<a href="#">Delete this record</a> <br/>
+		<a th:href="@{/path_url/edit/{id}(id = ${paramClassName.id})}">Edit this record</a> <br/>
+		<a th:href="@{/path_url/delete/{id}(id = ${paramClassName.id})}">Delete this record</a> <br/>
 		<a th:href="@{/path_url}">Back to list ${className}</a> <br/>
 	</div>
 </body>

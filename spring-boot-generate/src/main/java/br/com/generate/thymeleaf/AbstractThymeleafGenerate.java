@@ -42,8 +42,8 @@ public abstract class AbstractThymeleafGenerate extends ReadScaffoldInfo {
 		
 		tdParameters += TABS_INDEX + "<td>\n";
 		tdParameters += TABS_INDEX + "		<a th:href=\"@{/"+ className.toLowerCase() + "s/{id}(id = " + "${" + className.toLowerCase() + ".id}" + ")}\">Show</a> \n";
-		tdParameters += TABS_INDEX + " 		<a th:href=\"@{/"+ className.toLowerCase() + "s/{id}/edit(id = " + "${" + className.toLowerCase() + ".id}" + ")}\">Edit</a> \n";
-		tdParameters += TABS_INDEX + "		<a href=\"#\">Destroy</a> \n";
+		tdParameters += TABS_INDEX + " 		<a th:href=\"@{/"+ className.toLowerCase() + "s/edit/{id}(id = " + "${" + className.toLowerCase() + ".id}" + ")}\">Edit</a> \n";
+		tdParameters += TABS_INDEX + "		<a th:href=\"@{/"+ className.toLowerCase() + "s/delete/{id}(id = " + "${" + className.toLowerCase() + ".id}" + ")}\">Destroy</a> \n";
 		tdParameters += TABS_INDEX + "</td>";
 		return tdParameters;
 	}

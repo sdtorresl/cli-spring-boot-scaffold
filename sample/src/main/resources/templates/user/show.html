@@ -23,8 +23,8 @@
 			<span th:text="${user.email}"></span> 
 		</div> 
 
-		<a th:href="@{/users/{id}/edit(id = ${user.id})}">Edit this record</a> <br/>
-		<a href="#">Delete this record</a> <br/>
+		<a th:href="@{/users/edit/{id}(id = ${user.id})}">Edit this record</a> <br/>
+		<a th:href="@{/users/delete/{id}(id = ${user.id})}">Delete this record</a> <br/>
 		<a th:href="@{/users}">Back to list User</a> <br/>
 	</div>
 </body>

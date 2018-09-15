@@ -7,10 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.lang.String; 
+import java.lang.String; 
 
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "users")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,7 +19,7 @@ public class User implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "name_col")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "email")
