@@ -70,7 +70,7 @@ public class UserController {
 		return "redirect:/users/" + user.getId();
 	}
 	
-	@GetMapping("/{id}/edit")
+	@GetMapping("/edit/{id}")
 	public String update(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (id != null) {
@@ -98,7 +98,7 @@ public class UserController {
 		return "redirect:/users/" + user.getId();
 	}
 	
-	@GetMapping("/{id}/delete")
+	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 		try {
 			if (id != null) {
